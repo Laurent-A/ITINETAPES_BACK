@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.itinetape.dao.ItineraireDao;
 import com.app.itinetape.exception.ApiNotFoundException;
+import com.app.itinetape.modele.Etape;
 import com.app.itinetape.modele.Itineraire;
 
 
@@ -44,5 +45,10 @@ public class ItineraireService {
 		Itineraire itineraire = itineraireDao.findById(id).orElseThrow(() -> new ApiNotFoundException("itineraire", "id", id));
 		itineraireDao.delete(itineraire);
 	}
+	
+	public List<Etape> effacerEtapeParItineraire(Integer id) {
+		return this.itineraireDao.effacerEtapeParItineraire(id);
+	}
+
 
 }
