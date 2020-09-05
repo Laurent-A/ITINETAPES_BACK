@@ -32,6 +32,7 @@ public class EtapeService {
 
 		etape.setNom(etapeDetails.getNom());
 		etape.setDescription(etapeDetails.getDescription());
+		etape.setTotalfavori(etapeDetails.getTotalfavori());
 
 		Etape modifEtape = etapeDao.save(etape);
 
@@ -41,6 +42,10 @@ public class EtapeService {
 	public void suppressionEtape(Integer id) {
 		Etape etape = etapeDao.findById(id).orElseThrow(() -> new ApiNotFoundException("etape", "id", id));
 		etapeDao.delete(etape);
+	}
+	
+	public List<Etape> afficherEtapeParItineraire(Integer id) {
+		return this.etapeDao.etapeParItineraire(id);
 	}
 
 }
