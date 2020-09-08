@@ -32,6 +32,7 @@ public class EtapeService {
 
 		etape.setNom(etapeDetails.getNom());
 		etape.setDescription(etapeDetails.getDescription());
+		etape.setOrdreEtape(etapeDetails.getOrdreEtape());
 		etape.setTotalfavori(etapeDetails.getTotalfavori());
 
 		Etape modifEtape = etapeDao.save(etape);
@@ -47,5 +48,17 @@ public class EtapeService {
 	public List<Etape> afficherEtapeParItineraire(Integer id) {
 		return this.etapeDao.etapeParItineraire(id);
 	}
+	
+	public Etape genererQrCode(Integer id, Etape etapeDetails) {
+		Etape etape = etapeDao.findById(id).orElseThrow(() -> new ApiNotFoundException("etape", "id", id));
+		etape.setNom(etapeDetails.getNom());
+		etape.setDescription(etapeDetails.getDescription());
+		etape.setOrdreEtape(etapeDetails.getOrdreEtape());
+		etape.setQrCode(etapeDetails.getQrCode());
+		
+		Etape modifEtape = etapeDao.save(etape);
+		return modifEtape;
+	}
+
 
 }

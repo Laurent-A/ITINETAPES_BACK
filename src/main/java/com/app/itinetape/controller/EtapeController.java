@@ -62,5 +62,10 @@ public class EtapeController {
 	public List<Etape> afficherEtapeParItineraire(@PathVariable(value = "id") Integer id){
 	return this.etapeService.afficherEtapeParItineraire(id);
 	}
+	
+	@PutMapping("/etape/genererQrCode/{id}")
+	public Etape genererQrCode(@PathVariable(value = "id") Integer id, @RequestBody Etape etapeDetails) {
+	    return etapeService.genererQrCode(id, etapeDetails);
+	}
 
 }
