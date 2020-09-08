@@ -52,10 +52,4 @@ public class itineraireController {
 		itineraireService.suppressionItineraire(id);
 		return ResponseEntity.ok().build();
 	}
-	
-	@DeleteMapping(value="/itineraire/etape/{id}", produces= {MediaType.APPLICATION_JSON_VALUE})
-	public List<Etape> afficherEtapeParItineraire(@PathVariable(value = "id") Integer id){
-	return this.itineraireService.effacerEtapeParItineraire(id);
-	}
-
 }

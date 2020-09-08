@@ -2,6 +2,8 @@ package com.app.itinetape.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,7 @@ public class ItineraireService {
 		return itineraireDao.save(itineraire);
 	}
 	
+	@Transactional
 	public Itineraire modifierItineraire(Integer id, Itineraire itineraireDetails) {
 		Itineraire itineraire = itineraireDao.findById(id).orElseThrow(() -> new ApiNotFoundException("itineraire", "id", id));
 		
@@ -40,14 +43,15 @@ public class ItineraireService {
 		
 		return modifItineraire;
 	}
-	
+	@Transactional
 	public void suppressionItineraire(Integer id) {
+		this.effacerEtapeParItineraire(id);
 		Itineraire itineraire = itineraireDao.findById(id).orElseThrow(() -> new ApiNotFoundException("itineraire", "id", id));
 		itineraireDao.delete(itineraire);
 	}
 	
-	public List<Etape> effacerEtapeParItineraire(Integer id) {
-		return this.itineraireDao.effacerEtapeParItineraire(id);
+	private void effacerEtapeParItineraire(Integer id) {
+		this.itineraireDao.effacerEtapeParItineraire(id);
 	}
 
 
