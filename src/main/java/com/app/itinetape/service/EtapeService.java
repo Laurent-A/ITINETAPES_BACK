@@ -54,7 +54,6 @@ public class EtapeService {
 		etape.setNom(etapeDetails.getNom());
 		etape.setDescription(etapeDetails.getDescription());
 		etape.setOrdreEtape(etapeDetails.getOrdreEtape());
-		etape.setQrCode(etapeDetails.getQrCode());
 		
 		Etape modifEtape = etapeDao.save(etape);
 		return modifEtape;

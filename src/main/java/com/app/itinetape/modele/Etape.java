@@ -33,7 +33,6 @@ public class Etape implements Serializable {
 	private String description;
 	@NotNull
 	private String nom;
-	private String qrCode;
 	private Integer totalfavori;
 	@NotNull
 	private Integer ordreEtape;
@@ -47,13 +46,12 @@ public class Etape implements Serializable {
 		super();
 	}
 
-	public Etape(Integer id, String description, String nom, String qrCode, Integer totalfavori, Integer ordreEtape,
+	public Etape(Integer id, String description, String nom, Integer totalfavori, Integer ordreEtape,
 			Itineraire itineraire) {
 		super();
 		this.id = id;
 		this.description = description;
 		this.nom = nom;
-		this.qrCode = qrCode;
 		this.totalfavori = totalfavori;
 		this.ordreEtape = ordreEtape;
 		this.itineraire = itineraire;
@@ -81,14 +79,6 @@ public class Etape implements Serializable {
 
 	public void setNom(String nom) {
 		this.nom = nom;
-	}
-
-	public String getQrCode() {
-		return qrCode;
-	}
-
-	public void setQrCode(String qrCode) {
-		this.qrCode = qrCode;
 	}
 
 	public Integer getTotalfavori() {
